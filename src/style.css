@@ -1459,8 +1459,10 @@ button {
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
+  border: none;
   background: rgba(180, 203, 229, 0.18);
   transition: background-color 180ms ease;
+  cursor: pointer;
 }
 
 .contact-toggle__switch span {
@@ -3298,9 +3300,9 @@ button {
   gap: 0 0.4em;
 }
 
-.page-hero__animated-title>span:first-child {
+/* .page-hero__animated-title>span:first-child {
   white-space: nowrap;
-}
+} */
 
 /* Keep regular hero styles working for pages that haven't switched yet */
 
@@ -3372,39 +3374,6 @@ button {
   color: var(--color-text-primary);
 }
 
-
-.shop-page__controls {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-@media (min-width: 768px) {
-  .shop-page__controls {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-
-.shop-page__filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.shop-page__search-sort {
-  display: flex;
-  gap: 1rem;
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .shop-page__search-sort {
-    width: auto;
-  }
-}
 
 .shop-page__sort {
   background: var(--color-surface);
@@ -3958,14 +3927,12 @@ button {
 }
 
 .contact-page__form-card {
-  background:
-    radial-gradient(circle at top left, rgba(91, 144, 255, 0.14), transparent 36%),
-    radial-gradient(circle at bottom right, rgba(255, 138, 61, 0.08), transparent 28%),
-    linear-gradient(180deg, rgba(180, 203, 229, 0.08), rgba(180, 203, 229, 0.02)),
-    rgba(9, 16, 34, 0.9);
   border: 1px solid rgba(180, 203, 229, 0.12);
+  border-radius: 1.6rem;
+  background: radial-gradient(circle at top right, rgba(255, 138, 61, 0.1), transparent 24%), radial-gradient(circle at top left, rgba(91, 144, 255, 0.16), transparent 30%), linear-gradient(180deg, rgba(180, 203, 229, 0.08), rgba(180, 203, 229, 0.02)), rgba(10, 16, 31, 0.92);
+  box-shadow: 0 24px 56px var(--color-panel-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
   padding: 2rem;
-  border-radius: 1rem;
 }
 
 .contact-page__form-grid {
@@ -3992,17 +3959,21 @@ button {
 .contact-page__field input,
 .contact-page__field textarea {
   width: 100%;
-  background: rgba(2, 8, 24, 0.5);
-  border: 1px solid var(--color-border);
-  color: #fff;
-  padding: 0.8rem 1rem;
-  border-radius: 0.5rem;
+  border: 1px solid rgba(180, 203, 229, 0.14);
+  border-radius: 1rem;
+  background: rgba(180, 203, 229, 0.04);
+  color: var(--color-text-primary);
+  padding: 0.88rem 0.95rem;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease;
 }
 
 .contact-page__field input:focus,
 .contact-page__field textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
+  border-color: rgba(63, 111, 194, 0.55);
+  background: rgba(180, 203, 229, 0.06);
 }
 
 .contact-page__toggles {
@@ -4615,6 +4586,13 @@ button {
 .shop-page__sort-wrapper {
   position: relative;
   flex-shrink: 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .shop-page__sort-wrapper {
+    width: auto;
+  }
 }
 
 .shop-page__sort-trigger {
@@ -4630,11 +4608,18 @@ button {
   color: var(--color-text-primary);
   padding: 0.65rem 1rem;
   font-size: 0.9rem;
-  white-space: nowrap;
   cursor: pointer;
   transition: all 0.2s;
-  min-width: 10rem;
   justify-content: space-between;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .shop-page__sort-trigger {
+    white-space: nowrap;
+    min-width: 10rem;
+    width: auto;
+  }
 }
 
 .shop-page__sort-trigger:hover {
@@ -4643,6 +4628,7 @@ button {
 
 .shop-page__sort-chevron {
   transition: transform 0.2s;
+  flex-shrink: 0;
 }
 
 .shop-page__sort-chevron--open {
@@ -4651,18 +4637,33 @@ button {
 
 .shop-page__sort-menu {
   position: absolute;
-  top: calc(100% + 4px);
+  bottom: calc(100% + 4px);
+  left: 0;
   right: 0;
   min-width: 100%;
+  max-height: 50vh;
+  overflow-y: auto;
   background:
     radial-gradient(circle at top left, rgba(91, 144, 255, 0.10), transparent 40%),
     rgba(9, 16, 34, 0.98);
   border: 1px solid var(--color-border);
   border-radius: 0.75rem;
-  overflow: hidden;
+  overflow-x: hidden;
   z-index: 20;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
   animation: sortMenuIn 0.15s ease-out;
+}
+
+@media (min-width: 768px) {
+  .shop-page__sort-menu {
+    top: calc(100% + 4px);
+    bottom: auto;
+    left: auto;
+    right: 0;
+    max-height: none;
+    overflow-y: visible;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  }
 }
 
 @keyframes sortMenuIn {
@@ -5407,7 +5408,7 @@ button {
 .shop-page__controls {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
@@ -5417,10 +5418,28 @@ button {
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 1.5rem;
   }
 }
 
 .shop-page__filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .shop-page__filters {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: auto;
+    flex: 1;
+  }
+}
+
+.shop-page__badge-pills {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -5428,23 +5447,28 @@ button {
 
 .shop-page__search-sort {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.75rem;
   width: 100%;
 }
 
 @media (min-width: 768px) {
   .shop-page__search-sort {
+    flex-direction: row;
     width: auto;
     max-width: 28rem;
+    gap: 1rem;
   }
 }
+
 
 /* Shop promo strip ticker overrides */
 .shop-page__promo-strip.ticker-band {
   background: linear-gradient(90deg, rgba(3, 8, 22, 0.9), rgba(12, 22, 50, 0.9));
   border-top: 1px solid rgba(180, 203, 229, 0.1);
   border-bottom: 1px solid rgba(180, 203, 229, 0.1);
-  margin-bottom: 0; /* Reset spacing */
+  margin-bottom: 0;
+  /* Reset spacing */
 }
 
 .shop-page__promo-strip strong {
@@ -5481,6 +5505,10 @@ button {
 @media (max-width: 768px) {
   .shop-page__category-tiles {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .support-page__warranty-content {
+    width: 100%;
   }
 }
 
@@ -5530,6 +5558,11 @@ button {
   text-align: center;
 }
 
+.category-page__toolbar-section {
+  position: relative;
+  z-index: 20;
+}
+
 .category-page__toolbar {
   display: flex;
   align-items: center;
@@ -5537,6 +5570,8 @@ button {
   gap: 1rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
 }
 
 .category-page__advice {

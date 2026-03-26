@@ -180,7 +180,7 @@ export function CategoryPage() {
 
       <SectionContainer>
         {/* Back + Sort */}
-        <AnimatedSection direction="up" distance={24}>
+        <AnimatedSection direction="up" distance={24} className="category-page__toolbar-section">
           <div className="category-page__toolbar">
             <Link to="/shop" className="product-detail__back">
               <FiChevronLeft size={18} />

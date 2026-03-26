@@ -233,9 +233,9 @@ export function ShopPage() {
       <AnimatedSection direction="up" distance={38} blur={6}>
         <SectionContainer>
           {/* Controls */}
-          <div className="shop-page__controls" style={{ display: 'flex', flexDirection: 'row', gap: '1rem', justifyContent: 'space-between', width: "100%" }}>
-            <div className="shop-page__filters" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+          <div className="shop-page__controls">
+            <div className="shop-page__filters">
+              <div className="shop-page__badge-pills">
                 {categoryFilters.map((f) => (
                   <BadgePill
                     key={f.key}

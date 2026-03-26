@@ -248,19 +248,23 @@ export function ContactPage() {
                 <span>{f.whatsappToggle}</span>
                 <button
                   type="button"
-                  className={`toggle-switch ${whatsappEnabled ? 'toggle-switch--on' : ''}`}
+                  className={`contact-toggle__switch ${whatsappEnabled ? 'is-on' : ''}`}
                   onClick={() => setWhatsappEnabled((v) => !v)}
                   aria-pressed={whatsappEnabled}
-                />
+                >
+                  <span />
+                </button>
               </label>
               <label className="contact-page__toggle">
                 <span>{f.bothToggle}</span>
                 <button
                   type="button"
-                  className={`toggle-switch ${sendBoth ? 'toggle-switch--on' : ''}`}
+                  className={`contact-toggle__switch ${sendBoth ? 'is-on' : ''}`}
                   onClick={() => setSendBoth((v) => !v)}
                   aria-pressed={sendBoth}
-                />
+                >
+                  <span />
+                </button>
               </label>
             </div>
 
