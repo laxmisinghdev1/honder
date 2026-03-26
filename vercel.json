@@ -4,10 +4,10 @@
   "trailingSlash": false,
 
   "rewrites": [
-    {
-      "source": "/((?!api/).*)",
-      "destination": "/index.html"
-    }
+    { "source": "/api/chat", "destination": "/api/chat" },
+    { "source": "/api/contact", "destination": "/api/contact" },
+    { "source": "/api/checkout", "destination": "/api/checkout" },
+    { "source": "/(.*)", "destination": "/" }
   ],
 
   "headers": [
