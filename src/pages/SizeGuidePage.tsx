@@ -5,6 +5,7 @@ import { CTAButton } from '../components/ui/CTAButton'
 import { PageHero } from '../components/ui/PageHero'
 import { useLanguage } from '../i18n/LanguageContext'
 import { contactDetails, sizeGuideHeroPhrases } from '../data/hondar'
+import { Link } from 'react-router-dom'
 
 const copy = {
   es: {
@@ -102,10 +103,10 @@ const copy = {
 } as const
 
 const sizeChart = [
-  ['33', '20.5–21', '33'],['34', '21–21.5', '34'],['35', '21.5–22', '35'],
-  ['36', '22–22.5', '36'],['37', '22.5–23', '37'],['38', '23–23.5', '38'],
-  ['39', '23.5–24', '39'],['40', '24–24.5', '40'],['41', '24.5–25', '41'],
-  ['42', '25–25.5', '42'],['43', '25.5–26', '43'],['44', '26–26.5', '44'],['45', '26.5–27', '45'],
+  ['33', '20.5–21', '33'], ['34', '21–21.5', '34'], ['35', '21.5–22', '35'],
+  ['36', '22–22.5', '36'], ['37', '22.5–23', '37'], ['38', '23–23.5', '38'],
+  ['39', '23.5–24', '39'], ['40', '24–24.5', '40'], ['41', '24.5–25', '41'],
+  ['42', '25–25.5', '42'], ['43', '25.5–26', '43'], ['44', '26–26.5', '44'], ['45', '26.5–27', '45'],
 ]
 
 export function SizeGuidePage() {
@@ -177,7 +178,7 @@ export function SizeGuidePage() {
         <AnimatedSection direction="up" distance={24}>
           <div className="size-guide__ctas">
             <CTAButton href={contactDetails.phoneHref} target="_blank" rel="noreferrer">{c.askCta}</CTAButton>
-            <CTAButton href="/shop" variant="secondary">{c.shopCta}</CTAButton>
+            <Link className="catalog-view-all-btn" style={{ borderRadius: "10px" }} to="/shop">{c.shopCta}</Link>
           </div>
         </AnimatedSection>
       </SectionContainer>

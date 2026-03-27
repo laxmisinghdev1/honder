@@ -230,13 +230,13 @@ export function ProductDetailPage() {
   }
 
   const handleAddToCart = () => {
-    addItem({ 
-      id: product.id, 
-      name: product.name, 
-      category: product.category, 
-      price: product.price, 
+    addItem({
+      id: product.id,
+      name: product.name,
+      category: product.category,
+      price: product.price,
       priceLabel: product.priceLabel,
-      quantity: qty 
+      quantity: qty
     })
     setAddedFeedback(true)
     setTimeout(() => setAddedFeedback(false), 2000)

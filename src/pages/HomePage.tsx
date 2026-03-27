@@ -10,7 +10,9 @@ import { CTAButton } from '../components/ui/CTAButton'
 import { SectionContainer } from '../components/ui/SectionContainer'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { TypingCarousel } from '../components/ui/TypingCarousel'
+import { PageLoader } from '../components/ui/PageLoader'
 import { useCart } from '../context/CartContext'
+
 import {
   benefitsPhrasesByLanguage,
   catalogPhrasesByLanguage,
@@ -52,6 +54,7 @@ export function HomePage() {
   const [activeFilter, setActiveFilter] = useState<CategoryKey>('all')
   const [catalogQuery, setCatalogQuery] = useState('')
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
 
   const products = useMemo(() => getProducts(language), [language])
   const categoryFilters = useMemo(() => getCategoryFilters(language), [language])
@@ -76,6 +79,8 @@ export function HomePage() {
 
   return (
     <>
+      <PageLoader isLoading={!isVideoLoaded} />
+      
       <ProductQuickView
         product={selectedProduct}
         language={language}
@@ -101,6 +106,8 @@ export function HomePage() {
           playsInline
           preload="auto"
           poster={heroVideoPoster}
+          onLoadedData={() => setIsVideoLoaded(true)}
+          onCanPlayThrough={() => setIsVideoLoaded(true)}
         >
           <source src={heroVideoUrl} type="video/mp4" />
         </video>

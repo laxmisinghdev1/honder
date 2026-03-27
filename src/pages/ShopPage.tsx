@@ -26,6 +26,7 @@ const shopCopy = {
       { value: 'name-asc', label: 'Nombre A-Z' },
     ],
     shopByRider: 'Compra por tipo de patinador',
+    shopByCategory: 'Comprar por categoría',
     riderTypes: [
       { label: 'Principiantes', key: 'beginner', href: '/shop?level=beginner' },
       { label: 'Urbano / Freeskate', key: 'urban', href: '/shop?level=urban' },
@@ -53,6 +54,7 @@ const shopCopy = {
       { value: 'name-asc', label: 'Name A-Z' },
     ],
     shopByRider: 'Shop by rider type',
+    shopByCategory: 'Shop by category',
     riderTypes: [
       { label: 'Beginners', key: 'beginner', href: '/shop?level=beginner' },
       { label: 'Urban / Freeskate', key: 'urban', href: '/shop?level=urban' },
@@ -80,6 +82,7 @@ const shopCopy = {
       { value: 'name-asc', label: 'Nome A-Z' },
     ],
     shopByRider: 'Compre por tipo de patinador',
+    shopByCategory: 'Comprar por categoria',
     riderTypes: [
       { label: 'Iniciantes', key: 'beginner', href: '/shop?level=beginner' },
       { label: 'Urbano / Freeskate', key: 'urban', href: '/shop?level=urban' },
@@ -107,6 +110,7 @@ const shopCopy = {
       { value: 'name-asc', label: '名称 A-Z' },
     ],
     shopByRider: '按滑手类型选购',
+    shopByCategory: '按类别选购',
     riderTypes: [
       { label: '初学者', key: 'beginner', href: '/shop?level=beginner' },
       { label: '城市 / Freeskate', key: 'urban', href: '/shop?level=urban' },
@@ -207,6 +211,7 @@ export function ShopPage() {
       {/* Category Tiles */}
       <AnimatedSection direction="up" distance={24} blur={4}>
         <SectionContainer>
+          <p className="shop-page__category-label">{copy.shopByCategory}</p>
           <div className="shop-page__category-tiles">
             {[
               { slug: 'inline', name: { es: 'Patines en línea', en: 'Inline skates', pt: 'Patins inline', zh: '直排轮滑' } },

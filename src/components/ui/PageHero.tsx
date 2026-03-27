@@ -1,7 +1,8 @@
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import { AnimatedSection } from './AnimatedSection'
 import { BadgePill } from './BadgePill'
 import { TypingCarousel, type CarouselItem } from './TypingCarousel'
+import { PageLoader } from './PageLoader'
 
 const DEFAULT_POSTER =
   'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1600&q=80'
@@ -30,17 +31,22 @@ export function PageHero({
   children?: ReactNode
 }) {
   const modClass = modifier ? ` page-hero--${modifier}` : ''
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
 
   return (
-    <section className={`page-hero page-hero--video${modClass}`}>
-      <video
-        className="page-hero__video"
+    <>
+      <PageLoader isLoading={!isVideoLoaded} />
+      <section className={`page-hero page-hero--video${modClass}`}>
+        <video
+          className="page-hero__video"
         autoPlay
         loop
         muted
         playsInline
         preload="auto"
         poster={videoPoster}
+        onLoadedData={() => setIsVideoLoaded(true)}
+        onCanPlayThrough={() => setIsVideoLoaded(true)}
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
@@ -63,5 +69,6 @@ export function PageHero({
         {children}
       </AnimatedSection>
     </section>
+    </>
   )
 }
